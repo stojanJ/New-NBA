@@ -32,3 +32,5 @@ Route::get('/auth/login', [LoginController::class, 'create'])->name('login');
 Route::post('/auth/login', [LoginController::class, 'store']);
 
 Route::get('/auth/logout', [LoginController::class, 'destroy'])->name('logout');
+
+Route::post('/teams/{team_id}/comments',[CommentController::class, 'store'])->name('team-comments');

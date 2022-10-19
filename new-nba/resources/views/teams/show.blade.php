@@ -26,4 +26,29 @@
         </ul>    
     </div>
 
+    <div>
+        <ul>
+            @foreach ($team->comments as $comment)
+                <li>
+                    <p>
+                        {{ $comment->content }} by {{ $comment->user->name }}
+                    </p>
+                </li>
+            @endforeach
+        </ul>
+        </div>
+    
+        <h2>Leave a comment</h2>
+    
+        <form method="post" action="{{ route('team-comments', ['team_id' => $team->id]) }}">
+    
+            <div>
+                <label>Content</label>
+                <textarea type="email" name="content"></textarea>
+                @include('partials.error')
+                <button type="submit">Submit</button>
+            </div>
+    
+        </form>
+
 @endsection
