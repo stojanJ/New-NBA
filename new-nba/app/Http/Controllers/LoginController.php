@@ -37,6 +37,11 @@ class LoginController extends Controller
                 'message' => 'Please check you credentials.'
             ]);
         }
+        
+        if (!auth()->user()->is_verified) {
+            auth()->logout();
+            return back()->with('message', 'You need to confirm your account. We have sent you an activation code, please check your email.');
+        } 
     }
 
     public function destroy()

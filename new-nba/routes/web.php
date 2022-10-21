@@ -27,10 +27,11 @@ Route::get('/player/{id}', [PlayerController::class, 'show'])->name('single-play
 
 Route::get('/auth/register',[RegisterController::class, 'create']);
 Route::post('auth/register', [RegisterController::class, 'store']);
+Route::get('verification/{user}/{token}', [RegisterController::class, 'verify']);
 
 Route::get('/auth/login', [LoginController::class, 'create'])->name('login');
 Route::post('/auth/login', [LoginController::class, 'store']);
 
 Route::get('/auth/logout', [LoginController::class, 'destroy'])->name('logout');
 
-Route::post('/teams/{team_id}/comments',[CommentController::class, 'store'])->name('team-comments');
+Route::post('/teams/{team_id}/comments',[CommentController::class, 'store'])->middleware('ForbidenWords')->name('team-comments');

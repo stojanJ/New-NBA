@@ -3,6 +3,12 @@
 @section('title', 'Login')
 
 @section('content')
+    @if (session('message'))
+    <div class="alert alert-success">
+        <h4>{{ session('message') }} </h4>    
+    </div>
+    @endif
+
     <form method="POST" action="/login">
         @csrf
         
